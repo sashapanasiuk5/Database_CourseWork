@@ -17,7 +17,8 @@ ALTER TABLE repairs
 ADD CONSTRAINT date_check CHECK(startDate <= endDate);
 
 ALTER TABLE equipment_schedule
-ADD CONSTRAINT time_check CHECK(startTime < endTime);
+ADD CONSTRAINT time_check CHECK( (startTime < endTime) AND CanReservateEquipment(startTime, endTime, equipment_id) );
 
 ALTER TABLE work_schedule
-ADD CONSTRAINT time_check CHECK(startTime < endTime);
+ADD CONSTRAINT time_check CHECK( (startTime < endTime) AND CanReservateEmployee(startTime, endTime, employee_id) );
+

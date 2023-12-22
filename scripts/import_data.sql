@@ -15,7 +15,7 @@ COPY professions(name) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWo
 	ENCODING 'UTF-8'
 );
 
-COPY employees(fullname, phone, yearsOfExperience,profession_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\employees.csv' (
+COPY employees(fullname, phone, years_Of_Experience,profession_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\employees.csv' (
 	FORMAT CSV,
 	DELIMITER ',',
 	ENCODING 'UTF-8'
@@ -34,7 +34,7 @@ COPY equipments(name, type_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_
 	ENCODING 'UTF-8'
 );
 
-COPY cars(car_name, license_plate, yearOfManufacture) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\cars.csv'(
+COPY cars(car_name, license_plate, year_Of_Manufacture) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\cars.csv'(
 	FORMAT CSV,
 	DELIMITER ',',
 	ENCODING 'UTF-8'
