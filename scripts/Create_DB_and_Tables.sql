@@ -29,7 +29,12 @@ CREATE TABLE IF NOT EXISTS professions(
 );
 
 
-
+DROP TABLE IF EXISTS equipment_types CASCADE;
+CREATE TABLE IF NOT EXISTS equipment_types(
+	id int GENERATED ALWAYS AS IDENTITY,
+	name varchar(100) NOT NULL,
+	CONSTRAINT pk_equipment_type_id PRIMARY KEY(id)
+);
 
 DROP TABLE IF EXISTS equipments CASCADE;
 CREATE TABLE IF NOT EXISTS equipments(
@@ -117,6 +122,8 @@ CREATE TABLE IF NOT EXISTS repairs_services(
 	CONSTRAINT pk_repairs_services_id PRIMARY KEY(id)
 );
 
+ALTER TABLE equipments
+ADD COLUMN type_id int REFERENCES equipment_types(id);
 
 ALTER TABLE employees
 ADD COLUMN profession_id int NOT NULL REFERENCES professions(id); 
