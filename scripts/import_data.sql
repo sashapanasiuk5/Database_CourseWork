@@ -83,7 +83,7 @@ INSERT INTO inspections(results, kilometrage, inspection_date, car_id) VALUES
 ('Engine: Ok, Tires: Good, Transmission: Gear shifting issues, Test-drive: didn`t pass', 120000, '2023-02-28', 2);
 
 
-COPY repairs_details(detail_id, repair_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\repairs_details.csv'(
+COPY repairs_details(detail_id, repair_id, number) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\repairs_details.csv'(
 	FORMAT CSV,
 	DELIMITER ',',
 	ENCODING 'UTF-8'

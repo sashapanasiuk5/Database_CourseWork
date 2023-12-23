@@ -96,3 +96,161 @@ BEGIN
 	RETURN canReservate;
 END;
 $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION GetTimeForEquipmentReservation
+(
+	workDayStart time,
+	workDayEnd time,
+	reservationDate date,
+	equipmentID int
+)
+RETURNS TABLE(
+	startTime time,
+	endTime time
+)
+AS $$
+DECLARE
+	reservation record;
+	previousTime time;
+BEGIN
+	previousTime := workDayStart;
+	for reservation in (
+		SELECT CAST(equipment_schedule.startTime AS time), CAST(equipment_schedule.endTime AS time)
+		FROM equipment_schedule WHERE CAST(equipment_schedule.startTime AS date) = reservationDate 
+		AND equipment_id = equipmentID) LOOP
+		if reservation.startTime::time != previousTime THEN
+			startTime := previousTime;
+			endTime := reservation.startTime;
+			RETURN NEXT;
+		END IF;
+		previousTime := reservation.endTime;
+	END LOOP;
+	
+	if workDayEnd != previousTime THEN
+		startTime := previousTime;
+		endTime := workDayEnd;
+		RETURN NEXT;
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION GetTimeForEmployeeReservation
+(
+	workDayStart time,
+	workDayEnd time,
+	reservationDate date,
+	employeeID int
+)
+RETURNS TABLE(
+	startTime time,
+	endTime time
+)
+AS $$
+DECLARE
+	reservation record;
+	previousTime time;
+BEGIN
+	previousTime := workDayStart;
+	for reservation in (
+		SELECT CAST(work_schedule.startTime AS time), CAST(work_schedule.endTime AS time)
+		FROM work_schedule WHERE CAST(work_schedule.startTime AS date) = reservationDate 
+		AND employee_id = employeeID) LOOP
+		if reservation.startTime::time != previousTime THEN
+			startTime := previousTime;
+			endTime := reservation.startTime;
+			RETURN NEXT;
+		END IF;
+		previousTime := reservation.endTime;
+	END LOOP;
+	
+	if workDayEnd != previousTime THEN
+		startTime := previousTime;
+		endTime := workDayEnd;
+		RETURN NEXT;
+	END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION GetEmployeeWorkHours
+(
+	fromDate date,
+	toDate date,
+	employeeID int
+)
+RETURNS int
+AS $$
+DECLARE
+	workhours int;
+BEGIN
+	SELECT EXTRACT(hour FROM SUM(endTime-startTime)) as hours FROM employees 
+	JOIN work_schedule ON work_schedule.employee_id = employees.id
+	WHERE CAST(startTime AS date) BETWEEN fromDate AND toDate
+	AND employee_id = employeeID
+	INTO workhours;
+	RETURN workhours;
+END;
+$$ LANGUAGE plpgsql;
+
+--SELECT * FROM GetEmployeeWorkHours('2023-12-01', '2023-12-22', 15);
+
+CREATE OR REPLACE FUNCTION CalculateEmpolyeesWorkLoad
+(
+	workDayStart time,
+	workDayEnd time,
+	fromDate date,
+	toDate date
+)
+RETURNS TABLE(
+	fullname  varchar(100),
+	workload varchar(5)
+)
+AS $$
+DECLARE
+	scheduleRecord record;
+	maxHours decimal;
+BEGIN
+	maxHours:= EXTRACT(hour FROM (toDate - fromDate) * (workDayEnd - workDayStart))/2;
+	for scheduleRecord in (SELECT employees.fullname, SUM(endTime-startTime) as hours FROM employees 
+						   JOIN work_schedule ON work_schedule.employee_id = employees.id
+						   WHERE CAST(startTime AS date) BETWEEN fromDate AND toDate
+						   GROUP BY employees.fullname
+						  ) LOOP
+		fullname := scheduleRecord.fullname;
+		workload := CAST(ROUND((EXTRACT(hour FROM scheduleRecord.hours) / maxHours)*100, 1) AS varchar(5)) || '%';
+		RETURN NEXT;
+	END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+--SELECT * FROM CalculateEmpolyeesWorkLoad('8:00', '20:00','2023-12-01', '2023-12-22');
+
+CREATE OR REPLACE FUNCTION CountCarsByBrand(brand IN varchar(25))
+RETURNS int
+AS $$
+DECLARE
+	resultCount int;
+BEGIN
+	SELECT COUNT(*) FROM (SELECT car_name FROM cars
+	WHERE car_name like brand||'%') INTO resultCount;
+	RETURN resultCount;
+END;
+$$ LANGUAGE plpgsql;
+
+--SELECT CountCarsByBrand('Mercedes-Benz');
+
+
+CREATE OR REPLACE PROCEDURE AddSpecificDetailToRepair(repairID IN int, detailName IN varchar(100), detailCost IN int)
+AS $$
+DECLARE
+	detailID int;
+BEGIN
+	INSERT INTO details(name, cost) VALUES(detailName, detailCost) RETURNING id INTO detailID;
+	INSERT INTO repairs_details(repair_id, detail_id) VALUES (repairID, detailID);
+END;
+$$ LANGUAGE plpgsql;
+
+--CALL AddSpecificDetailToRepair(5, 'Super charged twin turbo 5.0 engine RATATTATA', 200000);

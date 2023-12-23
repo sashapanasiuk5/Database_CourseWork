@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS employees(
 	id int GENERATED ALWAYS AS IDENTITY,
 	fullname varchar(100) NOT NULL,
 	phone varchar(15) NOT NULL,
-	yearsOfEperience int NOT NULL DEFAULT 0,
+	years_Of_Experience int NOT NULL DEFAULT 0,
 	qualification text,
 	CONSTRAINT pk_employee_id PRIMARY KEY(id)
 );
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS employees(
 DROP TABLE IF EXISTS professions CASCADE;
 CREATE TABLE IF NOT EXISTS professions(
 	id int GENERATED ALWAYS AS IDENTITY,
-	name varchar(30) NOT NULL,
+	name varchar(50) NOT NULL,
 	
 	CONSTRAINT pk_profession_id PRIMARY KEY(id)
 );
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS cars(
 	id int GENERATED ALWAYS AS IDENTITY,
 	car_name varchar(50) NOT NULL,
 	license_plate varchar(8) NOT NULL,
-	yearOfManufacture int NOT NULL,
+	year_Of_Manufacture int NOT NULL,
 	CONSTRAINT pk_car_id PRIMARY KEY(id)
 );
 
@@ -110,6 +110,7 @@ CREATE TABLE IF NOT EXISTS repairs_details(
 	id int GENERATED ALWAYS AS IDENTITY,
 	repair_id int NOT NULL REFERENCES repairs(id),
 	detail_id int NOT NULL REFERENCES details(id),
+	number int NOT NULL,
 	CONSTRAINT pk_repairs_details_id PRIMARY KEY(id)
 );
 
