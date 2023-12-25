@@ -108,8 +108,8 @@ CREATE TABLE IF NOT EXISTS work_schedule(
 DROP TABLE IF EXISTS repairs_details CASCADE;
 CREATE TABLE IF NOT EXISTS repairs_details(
 	id int GENERATED ALWAYS AS IDENTITY,
-	repair_id int NOT NULL REFERENCES repairs(id),
-	detail_id int NOT NULL REFERENCES details(id),
+	repair_id int NOT NULL REFERENCES repairs(id) ON DELETE CASCADE,
+	detail_id int NOT NULL REFERENCES details(id) ON DELETE CASCADE,
 	number int NOT NULL,
 	CONSTRAINT pk_repairs_details_id PRIMARY KEY(id)
 );
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS repairs_details(
 DROP TABLE IF EXISTS repairs_services CASCADE;
 CREATE TABLE IF NOT EXISTS repairs_services(
 	id int GENERATED ALWAYS AS IDENTITY,
-	repair_id int NOT NULL REFERENCES repairs(id),
-	service_id int NOT NULL REFERENCES services(id),
+	repair_id int NOT NULL REFERENCES repairs(id) ON DELETE CASCADE,
+	service_id int NOT NULL REFERENCES services(id) ON DELETE CASCADE,
 	CONSTRAINT pk_repairs_services_id PRIMARY KEY(id)
 );
 
@@ -136,10 +136,10 @@ ALTER TABLE equipment_schedule
 ADD COLUMN equipment_id int NOT NULL REFERENCES equipments(id);
 
 ALTER TABLE equipment_schedule
-ADD COLUMN repair_id int NOT NULL REFERENCES repairs(id);
+ADD COLUMN repair_id int NOT NULL REFERENCES repairs(id) ON DELETE CASCADE;
 
 ALTER TABLE work_schedule
-ADD COLUMN repair_id int NOT NULL REFERENCES repairs(id);
+ADD COLUMN repair_id int NOT NULL REFERENCES repairs(id) ON DELETE CASCADE;
 
 ALTER TABLE work_schedule
 ADD COLUMN employee_id int NOT NULL REFERENCES employees(id);

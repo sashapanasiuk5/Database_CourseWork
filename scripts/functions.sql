@@ -1,3 +1,5 @@
+
+
 CREATE OR REPLACE FUNCTION ActualCarKilometrage(carID IN integer)
 RETURNS int
 AS $$
@@ -51,51 +53,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 SELECT car_name,license_plate,time_since_last_inspection FROM  GetCarsThatNeedInspection('3 month');
-
-
-CREATE OR REPLACE FUNCTION CanReservateEquipment(newStartTime IN timestamp, newEndTime IN timestamp, equipmentID in integer)
-RETURNS bool
-AS $$
-DECLARE
-	reservationDate date;
-	reservation record;
-	canReservate bool := true;
-BEGIN
-	reservationDate := CAST(newStartTime AS date);
-	for reservation in (
-		SELECT equipment_schedule.startTime, equipment_schedule.endTime FROM equipment_schedule 
-		WHERE CAST(startTime AS date) = reservationDate AND equipment_id = equipmentID
-	) LOOP
-		if (reservation.startTime, reservation.endTime) OVERLAPS (newStartTime, newEndTime) THEN
-			canReservate := false;
-		END IF;
-	END LOOP;
-	RETURN canReservate;
-END;
-$$ LANGUAGE plpgsql;
-
-
-
-CREATE OR REPLACE FUNCTION CanReservateEmployee(newStartTime IN timestamp, newEndTime IN timestamp, employeeID in integer)
-RETURNS bool
-AS $$
-DECLARE
-	reservationDate date;
-	reservation record;
-	canReservate bool := true;
-BEGIN
-	reservationDate := CAST(newStartTime AS date);
-	for reservation in (
-		SELECT work_schedule.startTime, work_schedule.endTime FROM work_schedule 
-		WHERE CAST(startTime AS date) = reservationDate AND employee_id = employeeID
-	) LOOP
-		if (reservation.startTime, reservation.endTime) OVERLAPS (newStartTime, newEndTime) THEN
-			canReservate := false;
-		END IF;
-	END LOOP;
-	RETURN canReservate;
-END;
-$$ LANGUAGE plpgsql;
 
 
 CREATE OR REPLACE FUNCTION GetTimeForEquipmentReservation
