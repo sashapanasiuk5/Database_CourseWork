@@ -52,7 +52,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT car_name,license_plate,time_since_last_inspection FROM  GetCarsThatNeedInspection('3 month');
+--SELECT car_name,license_plate,time_since_last_inspection FROM  GetCarsThatNeedInspection('3 month');
 
 
 CREATE OR REPLACE FUNCTION GetTimeForEquipmentReservation
