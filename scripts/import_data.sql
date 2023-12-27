@@ -48,7 +48,7 @@ COPY services(name) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\
 
 COPY repairs(problem, startdate, enddate, car_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\repairs.csv'(
 	FORMAT CSV,
-	DELIMITER ';',
+	DELIMITER ',',
 	ENCODING 'UTF-8'
 );
 

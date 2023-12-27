@@ -211,3 +211,37 @@ END;
 $$ LANGUAGE plpgsql;
 
 --CALL AddSpecificDetailToRepair(5, 'Super charged twin turbo 5.0 engine RATATTATA', 200000);
+
+CREATE OR REPLACE FUNCTION MakeReportAboutCar(carID IN int)
+RETURNS text
+AS $$
+DECLARE
+	report text :='';
+	repairRecord record;
+	serviceRecord record;
+	detailRecord record;
+BEGIN
+	FOR repairRecord IN (
+		SELECT problem, repairs.id, startDate FROM repairs
+		WHERE car_id = carID ORDER BY startDate DESC) LOOP
+		report := report || 'REPAIR ' || repairRecord.startDate ||E'\n' || 'PROBLEM: ' || repairRecord.problem;
+		report := report || E'\n\nSERVICE:\n';
+		for serviceRecord in (SELECT name FROM repairs_services
+							  JOIN services ON service_id = services.id
+							  WHERE repair_id = repairRecord.id) LOOP
+			report := report || '  ' || serviceRecord.name || E'\n';
+		END LOOP;
+		
+		report := report || E'\nREPLACED DETAILS:\n';
+		for detailRecord in (SELECT name FROM repairs_details
+							  JOIN details ON detail_id = details.id
+							  WHERE repair_id = repairRecord.id) LOOP
+			report := report || '  ' || detailRecord.name || E'\n';
+		END LOOP;
+		report := report || E'\n';
+	END LOOP;
+	RETURN report;
+END;
+$$ LANGUAGE plpgsql;
+
+--SELECT MakeReportAboutCar(41);

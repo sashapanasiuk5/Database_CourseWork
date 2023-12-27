@@ -31,8 +31,8 @@ CREATE OR REPLACE TRIGGER addRepair
 BEFORE INSERT ON repairs
 FOR EACH ROW EXECUTE FUNCTION checkRepair();
 
-INSERT INTO repairs(problem, startdate, car_id) VALUES('big problem', '2023-12-05', 93)
-SELECT * FROM repairs WHERE car_id = 93;
+--INSERT INTO repairs(problem, startdate, car_id) VALUES('big problem', '2023-12-05', 93);
+--SELECT * FROM repairs WHERE car_id = 93;
 
 CREATE OR REPLACE FUNCTION checkLicensePlate() RETURNS trigger
 AS $$
@@ -58,11 +58,11 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--SELECT * FROM cars;
+
 CREATE OR REPLACE TRIGGER addCar
 BEFORE INSERT ON cars
 FOR EACH ROW EXECUTE FUNCTION checkLicensePlate();
-
-
 
 CREATE OR REPLACE FUNCTION checkKilometrage()
 RETURNS trigger
@@ -100,7 +100,6 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE TRIGGER updateKilometrage
 BEFORE UPDATE ON inspections
 FOR EACH ROW EXECUTE FUNCTION checkKilometrage();
-
 
 
 CREATE OR REPLACE FUNCTION CanReservateEquipment(newStartTime IN timestamp, newEndTime IN timestamp, equipmentID in integer)

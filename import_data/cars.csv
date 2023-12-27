@@ -1,199 +1,200 @@
-Toyota Camry,ВО2345АТ,2008
-Ford Focus,АМ5678ВЕ,2015
-Honda Accord,ВТ9012ІО,2005
-Chevrolet Malibu,АІ3456СН,2019
-Nissan Altima,ІО7890ВЕ,2012
-BMW 3 Series,ВК2345МН,2003
-Mercedes-Benz E-Class,АК6789ІА,2018
-Volkswagen Jetta,ІМ1234ВА,2007
-Hyundai Sonata,ВН5678КА,2016
-Kia Optima,ВЕ9012КЕ,2014
-Subaru Legacy,ВТ3456ВА,2000
-Audi A4,АЕ5678ІС,2017
-Mazda6,ІМ2345АН,2006
-Lexus ES,ВА6789НН,2011
-Ford Fusion,ВЕ1234ІН,2009
-Toyota Corolla,АТ5678ІС,2013
-Honda Civic,ВЕ9012ВА,2002
-Chevrolet Impala,ІС3456СН,2010
-Nissan Maxima,ВА7890КІ,2004
-BMW 5 Series,ВК2345ХМ,2020
-Mercedes-Benz C-Class,ВЕ5678ІА,2001
-Volkswagen Passat,АМ9012ЕК,2014
-Hyundai Elantra,ВЕ3456ВА,2016
-Kia Forte,АР6789АК,2008
-Subaru Impreza,ВЕ1234АМ,2015
-Audi A3,АО5678ІС,2007
-Mazda3,ВН9012ВЕ,2019
-Lexus IS,ВК2345НК,2006
-Ford Taurus,ВА7890СВ,2018
-Toyota Avalon,АТ3456ІО,2012
-Honda Fit,ВІ1234АС,2003
-Chevrolet Cruze,ВЕ5678ТН,2017
-Nissan Sentra,ВК9012ВА,2011
-BMW 7 Series,ВА3456МО,2005
-Mercedes-Benz S-Class,АК6789СА,2013
-Volkswagen Golf,ІМ2345ВА,2009
-Hyundai Accent,ВА5678НО,2014
-Kia Rio,ВТ9012ІК,2016
-Subaru Outback,ВІ3456ТК,2001
-Audi A6,ВА7890НА,2010
-Mazda CX-5,ВР1234ТА,2015
-Lexus RX,ВК5678ОМ,2004
-Ford Explorer,ВІ9012ІА,2019
-Toyota RAV4,АІ3456ІО,2008
-Honda CR-V,ВІ6789СН,2012
-Chevrolet Equinox,АЕ3456КВ,2007
-Nissan Rogue,ВА7890РО,2014
-BMW X5,ВО1234МО,2017
-Mercedes-Benz GLE,ВК5678КА,2016
-Volkswagen Tiguan,ВА9012ГН,2018
-Hyundai Tucson,ВТ3456ТН,2013
-Kia Sportage,ВК6789ВО,2010
-Subaru Forester,ВР1234ІН,2011
-Audi Q5,ВА5678ТТ,2017
-Mazda CX-9,ВЕ9012ОС,2005
-Lexus NX,ВК2345ХН,2015
-Ford Escape,ВА5678РО,2009
-Toyota Highlander,ІІ9012ГУ,2014
-Honda Pilot,ВК3456МТ,2006
-Chevrolet Traverse,ВТ7890АН,2016
-Nissan Pathfinder,ІС1234СВ,2017
-BMW X3,ВА5678КМ,2008
-Mercedes-Benz GLC,АО9012ОО,2019
-Volkswagen Atlas,ВМ2345АС,2018
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
-Subaru Ascent,ВР1234АС,2019
-Audi Q8,ВЕ5678КВ,2018
-Mazda CX-9,ВО9012МЗ,2017
-Lexus RX,ВК2345РК,2022
-Ford Explorer,ВІ5678ІТ,2019
-Toyota Sequoia,АН9012СЕ,2020
-Honda HR-V,ВА9012ХВ,2003
-Chevrolet Blazer,ІО2345ВК,2019
-Nissan Armada,ВІ5678АМ,2002
-BMW X6,ВМ9012ХІ,2016
-Mercedes-Benz GLS,АТ5678ГЛ,2020
-Volkswagen Touareg,ІМ9012ТУ,2019
-Hyundai Palisade,ВН3456ПА,2021
-Kia Telluride,ВІ7890ТЕ,2020
+Mercedes-Benz M-Class,AO1399PA,2016
+Chrysler 300,CA9878BP,2011
+Volkswagen Golf,BX4365TB,2009
+Alfa Romeo Spider,AB9871MP,2011
+Jaguar XK Series,BE9024XO,2018
+Infiniti I,AI7807MB,2020
+Kia Spectra,CE0947MC,2017
+GMC Savana 3500,BT6435EI,2010
+GMC 1500 Club Coupe,AE0773OK,2011
+Saturn L-Series,AX9543EE,2019
+Volkswagen Cabriolet,AA2415II,2007
+Ford Mustang,BO1828TP,2017
+Mercury Sable,AM7804MI,2018
+Saab 9-7X,AP7415XA,2017
+Honda Pilot,AC5409IA,2012
+Cadillac Eldorado,BP7325OK,2011
+Toyota Avalon,AO3436TH,2020
+Subaru Legacy,BI7379TE,2009
+Buick Century,AH7680EK,2009
+Mitsubishi Mirage,АT2725MO,2007
+Kia Amanti,AA9184MT,2014
+Volkswagen Eos,BM2334MM,2018
+Nissan Titan,BP4378XA,2012
+Hyundai Azera,AM4904PE,2014
+Saab 9000,BX9691PB,2009
+Ford E-Series,AC6225CK,2007
+Jaguar XK Series,BI2954HM,2008
+Geo Tracker,CE5000MB,2008
+GMC Suburban 1500,CA1740KI,2008
+Audi Allroad,BP9461KO,2013
+Mitsubishi Truck,BX4770IX,2018
+Pontiac Sunfire,AB6705KA,2016
+MINI Cooper Countryman,BP5724PA,2007
+Honda Element,BE3567OX,2007
+GMC Sierra 1500,AA4406BA,2018
+Audi A3,AB1769IX,2014
+Plymouth Colt,BB3651AM,2017
+Nissan Murano,AM1773BC,2013
+Dodge Ram 2500,AE3451ME,2007
+Ford Expedition,AA9362BC,2015
+Volkswagen Scirocco,BM3579TX,2016
+Eagle Summit,BB9297EB,2012
+Mercury Lynx,BE0501EH,2020
+Land Rover Sterling,BH7625BT,2017
+Jaguar XJ Series,BI9811HX,2007
+Pontiac Grand Prix,AB4271KK,2012
+Chevrolet Tracker,BC5077BB,2016
+Toyota 4Runner,AI3238PH,2010
+Toyota FJ Cruiser,AA4301EH,2013
+MINI Cooper Clubman,AP9771PB,2020
+Fillmore Fillmore,AB1705AI,2018
+Mitsubishi Montero,AE2771XX,2020
+Mitsubishi Galant,BC7887TE,2013
+Mazda MX-6,CE7745HI,2016
+Dodge Avenger,AX9395KT,2014
+Scion tC,BA3780CX,2009
+Honda Fit,AA8740AA,2015
+Ford Tempo,CE0661IH,2015
+Hyundai Veloster,AE9301XA,2017
+Volkswagen New Beetle,AX5423CB,2016
+Nissan 200SX,AC7923CO,2015
+GMC Sierra 1500,BM0904HI,2019
+Buick Park Avenue,CA6609PP,2008
+Subaru Leone,CB9807KM,2020
+Ford Taurus,BM1249OI,2014
+Ford Fusion,BM2961EC,2012
+Honda Accord,AO3126HB,2013
+Subaru Impreza,BT4367EK,2009
+Toyota Camry,AA5564XI,2013
+Mitsubishi Lancer,AE5121HE,2013
+Volkswagen Type 2,BX1188TA,2012
+Ford LTD,BX3649PP,2008
+Chrysler Town & Country,AM0686MP,2020
+Toyota RAV4,AH3442MX,2013
+Buick Enclave,AP2267AT,2010
+Mercedes-Benz W126,AM6329XB,2011
+Nissan 350Z,BE2886BK,2015
+Bentley Continental GTC,AO0581BH,2013
+Lexus ES,CE2330OA,2016
+GMC Sierra 1500,CE1275HX,2014
+Saturn L-Series,BH0657IE,2010
+Mazda Navajo,АT9689CH,2007
+Pontiac Bonneville,BO5493IC,2016
+Pontiac LeMans,BE0581KC,2008
+Cadillac Escalade,AC1651KH,2018
+GMC Savana 3500,BO9697TM,2016
+Buick Riviera,BI8863TC,2011
+Subaru Impreza,BP8558BH,2014
+Audi RS 6,AE8219BA,2016
+Audi RS6,BC6856AA,2014
+Mitsubishi Pajero,BO1589AK,2009
+Mazda MX-5,AO6886TK,2009
+Audi A8,CB2578IC,2014
+Volvo C70,AE9413MH,2016
+Ford Escort,BO6349OA,2009
+Kia Optima,АT3462EP,2013
+Toyota Previa,BH4568MB,2017
+Pontiac Grand Prix,BB4307XI,2020
+Ford Crown Victoria,CB7390XA,2008
+Acura ZDX,AM2937OO,2018
+Buick LeSabre,AC2093MI,2009
+Dodge Caravan,AA6122EX,2008
+Acura RL,BB4152TP,2019
+Mercedes-Benz R-Class,BE7856MK,2008
+Mazda Protege,AC5259HC,2018
+Volkswagen Passat,CE2286AA,2017
+Lexus ES,АT5667IM,2010
+Ford Explorer Sport,AO1160CP,2010
+Toyota Tacoma,AO5149KK,2017
+Aptera Typ-1,AB1639OC,2009
+Volkswagen Eurovan,CB9628PK,2009
+Nissan 240SX,AO1928HT,2008
+Dodge Ram 1500 Club,AE1817HM,2012
+Oldsmobile Bravada,AC8688IM,2011
+Bentley Arnage,BE3258HO,2018
+Chevrolet Corvette,AB9457MO,2012
+Ford F350,BB9864AK,2017
+GMC Sierra 3500,CA5405TT,2012
+Ford E250,BE2308HK,2014
+Saturn Ion,BE2618EX,2020
+Pontiac Bonneville,AB5383HC,2011
+Mitsubishi Montero Sport,BB3214MX,2013
+Hyundai Santa Fe,CA7326EK,2016
+Ford F-Series,CE2140CX,2009
+Ferrari 458 Italia,CA4670AX,2020
+Chevrolet SSR,AI8824TM,2009
+Isuzu VehiCROSS,BT0095XK,2016
+Dodge Ram Van 1500,BX4094XE,2009
+Hummer H2,BX2357XT,2016
+Volkswagen Type 2,BT5666EI,2007
+Chevrolet Camaro,AX3178XC,2010
+Acura RDX,BB6793HP,2013
+Mitsubishi RVR,BX7554CA,2010
+Infiniti Q,AO6453TK,2017
+Chevrolet Malibu,AX6003EA,2012
+GMC Yukon,BC4322EC,2015
+Ferrari F430,АT5941IA,2015
+Ford Ranger,CB4992BX,2013
+Mazda Mazdaspeed 3,BM3593KP,2009
+Porsche 924 S,АT4844TH,2019
+Volvo S90,BP9473HA,2019
+Pontiac Grand Prix,BH0942BM,2009
+Acura RL,AH6116IA,2013
+Chevrolet Metro,BA5825AT,2015
+Pontiac Firefly,AH3925OM,2018
+Nissan 200SX,BO9323BP,2018
+Chevrolet Lumina APV,AX4896MA,2019
+Honda Accord,AX1553PC,2018
+BMW X5,AP2178BI,2011
+Jeep Grand Cherokee,BA5889AB,2009
+Ford F150,BB1332HH,2011
+Acura TL,AH5104EP,2012
+Saab 9-5,BP0567MB,2012
+Dodge Ram,BP2618IA,2017
+BMW 5 Series,BP2318EH,2020
+Hyundai Sonata,BT5918OA,2018
+Dodge Dakota Club,BC5816HP,2013
+Pontiac Grand Prix,CB9122XM,2016
+Chevrolet Uplander,BP7419TB,2011
+Lamborghini Murciélago,BA1108XB,2017
+Cadillac CTS,AE4015PT,2019
+GMC Sierra 2500,CE9459KP,2016
+Chrysler Crossfire,AH6760OM,2019
+Pontiac Montana,BE1698HX,2009
+Cadillac CTS-V,BE5980HK,2012
+Ram 1500,BA0193KT,2010
+Chevrolet Astro,CB8517BK,2011
+Buick Electra,BH6781OB,2018
+Saab 900,AC9865HH,2019
+Dodge Grand Caravan,CE4176KH,2010
+GMC Vandura G3500,AC2312HK,2017
+Ford F350,BH1966TH,2014
+Ford F-Series,AO4901BM,2016
+Pontiac Bonneville,BO4973OT,2019
+Volkswagen GTI,AO3083EA,2017
+Cadillac Eldorado,AP9825EB,2013
+Acura TL,AH6411IE,2017
+Dodge Ram 3500,BX1301HA,2019
+Lotus Elise,AX3132ME,2009
+Ford Escort,BE6821CX,2010
+Ford Explorer,AE5706CA,2015
+Volvo S80,BI4461IC,2019
+Nissan Altima,AH3155KC,2017
+Lamborghini Diablo,CA2763MK,2015
+Volkswagen New Beetle,AA4909PT,2015
+Mitsubishi Expo,BP2681HM,2016
+Pontiac Tempest,BM0697PE,2008
+Volkswagen Quantum,BX7767KP,2012
+Isuzu Rodeo Sport,AM5008IK,2016
+Mercedes-Benz GLK-Class,BM8636EE,2007
+Suzuki Samurai,AC9434XP,2012
+Volvo 960,BB0112TE,2007
+BMW 530,BO8174AE,2019
+GMC 3500 Club Coupe,CA0486HE,2019
+GMC Terrain,AE4906MX,2013
+Mercedes-Benz E-Class,AA6128CK,2015
+Nissan Altima,BB5966EB,2019
+Kia Sportage,BX6283XB,2012
+Pontiac Sunfire,BX3772HK,2017
+BMW Alpina B7,AP7426KO,2010
