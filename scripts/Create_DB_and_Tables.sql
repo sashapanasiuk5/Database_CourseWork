@@ -1,13 +1,4 @@
-/*EATE DATABASE "CarService"
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'English_United States.1252'
-    LC_CTYPE = 'English_United States.1252'
-    LOCALE_PROVIDER = 'libc'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;*/
+/*CREATE DATABASE CarService*/
 
 DROP TABLE IF EXISTS employees CASCADE;
 CREATE TABLE IF NOT EXISTS employees(
@@ -36,8 +27,8 @@ CREATE TABLE IF NOT EXISTS equipment_types(
 	CONSTRAINT pk_equipment_type_id PRIMARY KEY(id)
 );
 
-DROP TABLE IF EXISTS equipments CASCADE;
-CREATE TABLE IF NOT EXISTS equipments(
+DROP TABLE IF EXISTS equipment CASCADE;
+CREATE TABLE IF NOT EXISTS equipment(
 	id int GENERATED ALWAYS AS IDENTITY,
 	name varchar(100) NOT NULL,
 	CONSTRAINT pk_equipment_id PRIMARY KEY(id)
@@ -123,7 +114,7 @@ CREATE TABLE IF NOT EXISTS repairs_services(
 	CONSTRAINT pk_repairs_services_id PRIMARY KEY(id)
 );
 
-ALTER TABLE equipments
+ALTER TABLE equipment
 ADD COLUMN type_id int REFERENCES equipment_types(id);
 
 ALTER TABLE employees
@@ -133,7 +124,7 @@ ALTER TABLE inspections
 ADD COLUMN car_id int NOT NULL REFERENCES cars(id); 
 
 ALTER TABLE equipment_schedule
-ADD COLUMN equipment_id int NOT NULL REFERENCES equipments(id);
+ADD COLUMN equipment_id int NOT NULL REFERENCES equipment(id);
 
 ALTER TABLE equipment_schedule
 ADD COLUMN repair_id int NOT NULL REFERENCES repairs(id) ON DELETE CASCADE;

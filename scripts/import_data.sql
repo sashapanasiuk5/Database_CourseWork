@@ -1,7 +1,7 @@
 TRUNCATE employees RESTART IDENTITY CASCADE;
 TRUNCATE professions RESTART IDENTITY CASCADE;
 TRUNCATE equipment_types RESTART IDENTITY CASCADE;
-TRUNCATE equipments RESTART IDENTITY CASCADE;
+TRUNCATE equipment RESTART IDENTITY CASCADE;
 TRUNCATE cars RESTART IDENTITY CASCADE;
 TRUNCATE services RESTART IDENTITY CASCADE;
 TRUNCATE details RESTART IDENTITY CASCADE;
@@ -28,7 +28,7 @@ COPY equipment_types(name) FROM 'C:\Users\hitec\OneDrive\Documents\Database_Cour
 	ENCODING 'UTF-8'
 );
 
-COPY equipments(name, type_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\equipments.csv' (
+COPY equipment(name, type_id) FROM 'C:\Users\hitec\OneDrive\Documents\Database_CourseWork\import_data\equipments.csv' (
 	FORMAT CSV,
 	DELIMITER ',',
 	ENCODING 'UTF-8'
