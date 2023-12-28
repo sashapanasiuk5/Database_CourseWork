@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS cars(
 DROP TABLE IF EXISTS repairs CASCADE;
 CREATE TABLE IF NOT EXISTS repairs(
 	id int GENERATED ALWAYS AS IDENTITY,
-	problem text,
+	problem text NOT NULL,
 	startDate date NOT NULL,
 	endDate date,
 	CONSTRAINT pk_repair_id PRIMARY KEY(id)
