@@ -34,7 +34,7 @@ ORDER BY startTime;
 
 --Розклад роботи обладнання на сьогодні
 SELECT name, car_name, license_plate, startTime, endTime  FROM equipment_schedule
-JOIN equipments ON equipment_id = equipments.id
+JOIN equipment ON equipment_id = equipment.id
 JOIN repairs ON repair_id = repairs.id
 JOIN cars ON car_id = cars.id
 WHERE DATE(startTime) = CURRENT_DATE
@@ -125,7 +125,7 @@ WITH kilometrages AS(
 	SELECT car_id, MAX(kilometrage) as kilometrage FROM inspections
 	GROUP By car_id
 )
-SELECT year_of_manufacture, ROUND(AVG(kilometrages.kilometrage),3) FROM cars
+SELECT year_of_manufacture, ROUND(AVG(kilometrages.kilometrage),3) as kilometrage FROM cars
 JOIN kilometrages ON car_id = cars.id
 GROUP BY year_of_manufacture
 ORDER BY year_of_manufacture

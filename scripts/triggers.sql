@@ -66,11 +66,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---SELECT * FROM cars;
 
-CREATE OR REPLACE TRIGGER checkLicensePlate
+
+CREATE OR REPLACE TRIGGER checkLicensePlateBeforeAddition
 BEFORE INSERT ON cars
 FOR EACH ROW EXECUTE FUNCTION checkLicensePlate();
+
+INSERT INTO cars(car_name, license_plate, year_of_manufacture)
+VALUES ('Volkswagen Passat', 'GF54d5GD', 2009);
+
+CREATE OR REPLACE TRIGGER checkLicensePlateBeforeUpdating
+BEFORE UPDATE ON cars
+FOR EACH ROW EXECUTE FUNCTION checkLicensePlate();
+
+UPDATE cars SET license_plate = '34АААА45' WHERE id = 15;
+VALUES ('Volkswagen Passat', 'GF54d5GD', 2009);
 
 CREATE OR REPLACE FUNCTION checkKilometrage()
 RETURNS trigger
@@ -105,13 +115,21 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER updateKilometrage
+CREATE OR REPLACE TRIGGER checkKilometrageBeforeUpdating
 BEFORE UPDATE ON inspections
 FOR EACH ROW EXECUTE FUNCTION checkKilometrage();
 
+--SELECT * FROM inspections WHERE car_id = 75;
+--UPDATE inspections SET kilometrage = 200000 WHERE id = 13;
 
+CREATE OR REPLACE TRIGGER checkKilometrageBeforeInserting
+BEFORE INSERT ON inspections
+FOR EACH ROW EXECUTE FUNCTION checkKilometrage();
 
-CREATE OR REPLACE FUNCTION TryReservateEquipment()
+INSERT INTO inspections(results, kilometrage, inspection_date, car_id)
+VALUES('Test', 100000, '2023-12-15', 75);
+
+CREATE OR REPLACE FUNCTION СheckReservationTimeForEquipment()
 RETURNS trigger
 AS $$
 BEGIN
@@ -122,16 +140,23 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER reservateEquipment
+CREATE OR REPLACE TRIGGER TryReservateEquipment
 BEFORE INSERT ON equipment_schedule
-FOR EACH ROW EXECUTE FUNCTION TryReservateEquipment();
+FOR EACH ROW EXECUTE FUNCTION СheckReservationTimeForEquipment();
 
-CREATE OR REPLACE TRIGGER UpdateReservationEquipment
+
+SELECT * FROM equipment_schedule WHERE equipment_id = 7;
+INSERT INTO equipment_schedule(startTime, endTime, equipment_id, repair_id)
+VALUES('2023-09-01 12:00', '2023-09-01 14:30', 7, 23);
+
+
+CREATE OR REPLACE TRIGGER UpdateReservationTimeForEquipment
 BEFORE UPDATE ON equipment_schedule
-FOR EACH ROW EXECUTE FUNCTION TryReservateEquipment();
+FOR EACH ROW EXECUTE FUNCTION СheckReservationTimeForEquipment();
 
+UPDATE equipment_schedule SET endTime = '2023-09-01 20:00' WHERE id = 10;
 
-CREATE OR REPLACE FUNCTION TryReservateEmployee()
+CREATE OR REPLACE FUNCTION СheckReservationTimeForEmployee()
 RETURNS trigger
 AS $$
 BEGIN
@@ -142,12 +167,17 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER reservateEmployee
+CREATE OR REPLACE TRIGGER TryReservateEmployee
 BEFORE INSERT ON work_schedule
-FOR EACH ROW EXECUTE FUNCTION TryReservateEmployee();
+FOR EACH ROW EXECUTE FUNCTION СheckReservationTimeForEmployee();
 
-CREATE OR REPLACE TRIGGER UpdateReservationEmployee
+SELECT * FROM work_schedule;
+INSERT INTO work_schedule(startTime, endTime, repair_id, employee_id)
+VALUES('2023-12-07 15:00', '2023-12-07 18:00', 25, 5);
+
+CREATE OR REPLACE TRIGGER UpdateReservationTimeForEmployee
 BEFORE UPDATE ON work_schedule
-FOR EACH ROW EXECUTE FUNCTION TryReservateEmployee();
+FOR EACH ROW EXECUTE FUNCTION СheckReservationTimeForEmployee();
 
 
+UPDATE work_schedule SET endTime = '2023-12-07 15:00' WHERE id = 5;

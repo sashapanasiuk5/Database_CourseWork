@@ -203,20 +203,25 @@ $$ LANGUAGE plpgsql;
 --SELECT CountCarsByMake('Volkswagen');
 
 
-CREATE OR REPLACE PROCEDURE AddSpecificDetailToRepair(repairID IN int, detailName IN varchar(100), detailCost IN int)
+CREATE OR REPLACE PROCEDURE AddSpecificDetailToRepair(repairID IN int, detailName IN varchar(100), detailCost IN int, detailNumber IN int)
 AS $$
 DECLARE
 	detailID int;
 BEGIN
 	INSERT INTO details(name, cost) VALUES(detailName, detailCost) RETURNING id INTO detailID;
-	INSERT INTO repairs_details(repair_id, detail_id) VALUES (repairID, detailID);
+	INSERT INTO repairs_details(repair_id, detail_id, number) VALUES (repairID, detailID, detailNumber);
 END;
 $$ LANGUAGE plpgsql;
 
---CALL AddSpecificDetailToRepair(5, 'Super charged twin turbo 5.0 engine RATATTATA', 200000);
+CALL AddSpecificDetailToRepair(8, 'Dynamic TurboBoost Module', 50000, 1);
 
-CREATE OR REPLACE FUNCTION MakeReportAboutCar(carID IN int)
-RETURNS text
+SELECT details.name FROM repairs 
+JOIN repairs_details ON repair_id = repairs.id
+JOIN details ON detail_id = details.id
+WHERE repair_id = 8;
+
+
+CREATE OR REPLACE PROCEDURE MakeReportAboutCar(carID IN int)
 AS $$
 DECLARE
 	report text :='';
@@ -227,24 +232,72 @@ BEGIN
 	FOR repairRecord IN (
 		SELECT problem, repairs.id, startDate FROM repairs
 		WHERE car_id = carID ORDER BY startDate DESC) LOOP
-		report := report || 'REPAIR ' || repairRecord.startDate ||E'\n' || 'PROBLEM: ' || repairRecord.problem;
-		report := report || E'\n\nSERVICE:\n';
+		RAISE NOTICE 'REPAIR %', repairRecord.startDate;
+		RAISE NOTICE 'PROBLEM: %', repairRecord.problem;
+		RAISE NOTICE 'SERVICE: ';
 		for serviceRecord in (SELECT name FROM repairs_services
 							  JOIN services ON service_id = services.id
 							  WHERE repair_id = repairRecord.id) LOOP
-			report := report || '  ' || serviceRecord.name || E'\n';
+			RAISE NOTICE ' %', serviceRecord.name;
 		END LOOP;
 		
-		report := report || E'\nREPLACED DETAILS:\n';
+		RAISE NOTICE 'REPLACED DETAILS:';
 		for detailRecord in (SELECT name FROM repairs_details
 							  JOIN details ON detail_id = details.id
 							  WHERE repair_id = repairRecord.id) LOOP
-			report := report || '  ' || detailRecord.name || E'\n';
+			RAISE NOTICE ' %', detailRecord.name;
 		END LOOP;
-		report := report || E'\n';
+		RAISE NOTICE '';
 	END LOOP;
-	RETURN report;
+	
 END;
 $$ LANGUAGE plpgsql;
 
---SELECT MakeReportAboutCar(41);
+--SELECT * FROM repairs;
+--CALL MakeReportAboutCar(28);
+
+
+CREATE OR REPLACE FUNCTION CanReservateEquipment(newStartTime IN timestamp, newEndTime IN timestamp, equipmentID in integer)
+RETURNS bool
+AS $$
+DECLARE
+	reservationDate date;
+	reservation record;
+	canReservate bool := true;
+BEGIN
+	reservationDate := CAST(newStartTime AS date);
+	for reservation in (
+		SELECT equipment_schedule.startTime, equipment_schedule.endTime FROM equipment_schedule 
+		WHERE CAST(startTime AS date) = reservationDate AND equipment_id = equipmentID
+	) LOOP
+		if (reservation.startTime, reservation.endTime) OVERLAPS (newStartTime, newEndTime) THEN
+			canReservate := false;
+		END IF;
+	END LOOP;
+	RETURN canReservate;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+CREATE OR REPLACE FUNCTION CanReservateEmployee(newStartTime IN timestamp, newEndTime IN timestamp, employeeID in integer)
+RETURNS bool
+AS $$
+DECLARE
+	reservationDate date;
+	reservation record;
+	canReservate bool := true;
+BEGIN
+	reservationDate := CAST(newStartTime AS date);
+	for reservation in (
+		SELECT work_schedule.startTime, work_schedule.endTime FROM work_schedule 
+		WHERE CAST(startTime AS date) = reservationDate AND employee_id = employeeID
+	) LOOP
+		if (reservation.startTime, reservation.endTime) OVERLAPS (newStartTime, newEndTime) THEN
+			canReservate := false;
+		END IF;
+	END LOOP;
+	RETURN canReservate;
+END;
+$$ LANGUAGE plpgsql;
+--SELECT MakeReportAboutCar(8);
