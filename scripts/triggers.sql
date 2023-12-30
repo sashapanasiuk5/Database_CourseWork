@@ -13,6 +13,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+DELETE FROM cars WHERE id = 15;
+
+SELECT * FROM cars;
+SELECT * FROM repairs WHERE car_id = 15;
+SELECT * FROM inspections WHERE car_id = 15;
+
 CREATE OR REPLACE FUNCTION checkRepair()
 RETURNS trigger
 AS $$
@@ -27,12 +33,14 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE TRIGGER addRepair
+
+
+CREATE OR REPLACE TRIGGER checkRepair
 BEFORE INSERT ON repairs
 FOR EACH ROW EXECUTE FUNCTION checkRepair();
 
---INSERT INTO repairs(problem, startdate, car_id) VALUES('big problem', '2023-12-05', 93);
---SELECT * FROM repairs WHERE car_id = 93;
+INSERT INTO repairs(problem, startdate, car_id) VALUES('Engine overheating', '2023-12-05', 113);
+SELECT * FROM repairs WHERE endDate IS NULL;
 
 CREATE OR REPLACE FUNCTION checkLicensePlate() RETURNS trigger
 AS $$
@@ -60,7 +68,7 @@ $$ LANGUAGE plpgsql;
 
 --SELECT * FROM cars;
 
-CREATE OR REPLACE TRIGGER addCar
+CREATE OR REPLACE TRIGGER checkLicensePlate
 BEFORE INSERT ON cars
 FOR EACH ROW EXECUTE FUNCTION checkLicensePlate();
 
@@ -102,49 +110,6 @@ BEFORE UPDATE ON inspections
 FOR EACH ROW EXECUTE FUNCTION checkKilometrage();
 
 
-CREATE OR REPLACE FUNCTION CanReservateEquipment(newStartTime IN timestamp, newEndTime IN timestamp, equipmentID in integer)
-RETURNS bool
-AS $$
-DECLARE
-	reservationDate date;
-	reservation record;
-	canReservate bool := true;
-BEGIN
-	reservationDate := CAST(newStartTime AS date);
-	for reservation in (
-		SELECT equipment_schedule.startTime, equipment_schedule.endTime FROM equipment_schedule 
-		WHERE CAST(startTime AS date) = reservationDate AND equipment_id = equipmentID
-	) LOOP
-		if (reservation.startTime, reservation.endTime) OVERLAPS (newStartTime, newEndTime) THEN
-			canReservate := false;
-		END IF;
-	END LOOP;
-	RETURN canReservate;
-END;
-$$ LANGUAGE plpgsql;
-
-
-
-CREATE OR REPLACE FUNCTION CanReservateEmployee(newStartTime IN timestamp, newEndTime IN timestamp, employeeID in integer)
-RETURNS bool
-AS $$
-DECLARE
-	reservationDate date;
-	reservation record;
-	canReservate bool := true;
-BEGIN
-	reservationDate := CAST(newStartTime AS date);
-	for reservation in (
-		SELECT work_schedule.startTime, work_schedule.endTime FROM work_schedule 
-		WHERE CAST(startTime AS date) = reservationDate AND employee_id = employeeID
-	) LOOP
-		if (reservation.startTime, reservation.endTime) OVERLAPS (newStartTime, newEndTime) THEN
-			canReservate := false;
-		END IF;
-	END LOOP;
-	RETURN canReservate;
-END;
-$$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION TryReservateEquipment()
 RETURNS trigger

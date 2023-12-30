@@ -14,6 +14,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+SELECT ActualCarKilometrage(15);
 
 CREATE OR REPLACE FUNCTION GetLastCarInspectionDate(carID IN integer)
 RETURNS date
@@ -27,6 +28,8 @@ BEGIN
 	RETURN lastInspectionDate;
 END;
 $$ LANGUAGE plpgsql;
+
+SELECT GetLastCarInspectionDate(12)
 
 CREATE OR REPLACE FUNCTION GetCarsThatNeedInspection(timeSpan IN interval)
 RETURNS TABLE(
@@ -52,7 +55,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---SELECT car_name,license_plate,time_since_last_inspection FROM  GetCarsThatNeedInspection('3 month');
+SELECT * FROM  GetCarsThatNeedInspection('3 month');
 
 
 CREATE OR REPLACE FUNCTION GetTimeForEquipmentReservation
@@ -183,9 +186,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---SELECT * FROM CalculateEmpolyeesWorkLoad('8:00', '20:00','2023-12-01', '2023-12-22');
+--SELECT * FROM CalculateEmpolyeesWorkLoad('8:30', '20:00','2023-12-01', '2023-12-22');
 
-CREATE OR REPLACE FUNCTION CountCarsByBrand(brand IN varchar(25))
+CREATE OR REPLACE FUNCTION CountCarsByMake(brand IN varchar(25))
 RETURNS int
 AS $$
 DECLARE
@@ -197,7 +200,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---SELECT CountCarsByBrand('Mercedes-Benz');
+--SELECT CountCarsByMake('Volkswagen');
 
 
 CREATE OR REPLACE PROCEDURE AddSpecificDetailToRepair(repairID IN int, detailName IN varchar(100), detailCost IN int)
