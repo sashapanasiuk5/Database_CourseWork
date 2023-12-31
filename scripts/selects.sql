@@ -40,6 +40,8 @@ JOIN cars ON car_id = cars.id
 WHERE DATE(startTime) = CURRENT_DATE
 ORDER BY startTime;
 
+
+
 --Автомобіль з найбільшим пробігом
 SELECT car_name, license_plate, kilometrage FROM cars JOIN inspections
 ON car_id = cars.id
